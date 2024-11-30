@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "aljazeera";
+  src: url(../assets/fonts/aljazeera.ttf);
+}
+@font-face {
+  font-family: "arial";
+  src: url(../assets/fonts/arial.ttf);
+}
+@font-face {
+  font-family: "diwani";
+  src: url(../assets/fonts/diwani.ttf);
+}
+@font-face {
+  font-family: "lemonmilk";
+  src: url(../assets/fonts/lemonmilk.ttf);
+}
+@font-face {
+  font-family: "tajawal";
+  src: url(../assets/fonts/tajawal.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  color-scheme: dark;
+  
+}
+html {
+  display: flex;
+}
+#dropdown {
+  width: 15%;
+  margin: 2%;
+  padding: 10px;
+  background-color: aliceblue;
+  color: black;
+}
+#previewCanvas {
+  border: white 1px solid;
+  width: 500px;
+}
+.dailyCard {
+  display: none;
+}

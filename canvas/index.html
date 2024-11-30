@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Khudhil Kitaba Biquwwa</title>
+  </head>
+  <body>
+    <div class="dailyCard">
+      <img src="../assets/dailyCards/BG.svg" id="dailyCardBG" alt="" />
+      <img src="../assets/dailyCards/Fill.png" id="dailyCardFill" alt="" />
+      <img src="../assets/dailyCards/Border.svg" id="dailyCardBorder"></img>
+      <img src="../assets/dailyCards/divider0.svg" id="dailyCardDivider0"></img>
+      <img src="../assets/dailyCards/divider1.svg" id="dailyCardDivider1"></img>
+    </div>
+    <textarea type="text" name="" id="hadithInput"></textarea>
+    <input type="text" name="" value=" قَالَ رَسُولَ اللَّهِ ﷺ" id="qalaText">
+    <select id="dropdown">
+      <option value="" disabled selected hidden>Select An Image ID</option>
+      <option value="dailyCard">Daily Card</option>
+      <option value="b">two</option>
+      <option value="c">three</option>
+    </select>
+    <button id="download">Download</button>
+    <canvas id="previewCanvas" height="4200px" width="4200px"></canvas>
+    <script src="./scripts/inputProcessing.js"></script>
+    <script src="./scripts/Ahadith/processAhadith.js"></script>
+  </body>
+</html>

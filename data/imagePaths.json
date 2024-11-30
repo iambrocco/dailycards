@@ -1,0 +1,54 @@
+{
+  "dayNames": [
+    "s  u  n  d  a  y   ",
+    "m   o   n   d   a   y   ",
+    "t  u  e  s  d  a  y   ",
+    "w  e  d  n  e  s  d  a  y   ",
+    "t   h   u   r   s   d   a   y   ",
+    "f   r   i   d   a   y   ",
+    "s a t u r d a y   "
+  ],
+  "daysOfTheWeek": [
+    "./assets/weekdays/0.png",
+    "./assets/weekdays/1.png",
+    "./assets/weekdays/2.png",
+    "./assets/weekdays/3.png",
+    "./assets/weekdays/4.png",
+    "./assets/weekdays/5.png",
+    "./assets/weekdays/6.png"
+  ],
+  "hijriMonths": [
+    "./assets/hijri/1.png",
+    "./assets/hijri/2.png",
+    "./assets/hijri/3.png",
+    "./assets/hijri/4.png",
+    "./assets/hijri/5.png",
+    "./assets/hijri/6.png",
+    "./assets/hijri/7.png",
+    "./assets/hijri/8.png",
+    "./assets/hijri/9.png",
+    "./assets/hijri/10.png",
+    "./assets/hijri/11.png",
+    "./assets/hijri/12.png"
+  ],
+  "miladiMonths": [
+    "./assets/miladi/1.png",
+    "./assets/miladi/2.png",
+    "./assets/miladi/3.png",
+    "./assets/miladi/4.png",
+    "./assets/miladi/5.png",
+    "./assets/miladi/6.png",
+    "./assets/miladi/7.png",
+    "./assets/miladi/8.png",
+    "./assets/miladi/9.png",
+    "./assets/miladi/10.png",
+    "./assets/miladi/11.png",
+    "./assets/miladi/12.png"
+  ],
+  "dividers": [
+    "./assets/dailyCards/divider0.svg",
+    "./assets/dailyCards/divider1.svg"
+  ],
+  "bismillah": ["./assets/dailyCards/tawakkol.svg"],
+  "logo": ["./assets/logo.svg"]
+}
