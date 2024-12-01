@@ -5,20 +5,22 @@ import {
   WEEKDAYS_AR_IMAGES,
   WEEKDAYS_EN_NAMES,
 } from "./data.js";
+import { gregorianToHijri } from "./lib/hijri.js";
 
 export default class DailyCard {
   constructor(date = new Date()) {
     this.date = date;
+    this.hijriDate = gregorianToHijri(date);
 
     this.weekday = date.getDay();
-    this.month = date.getMonth();
+
+    this.month = date.getMonth() + 1;
     this.day = date.getDate();
     this.year = date.getFullYear();
 
-    // TODO - compute real hijri date
-    this.hijriMonth = (this.month + 1) % 12;
-    this.hijriDay = this.day + 1;
-    this.hijriYear = this.year + 200;
+    this.hijriMonth = this.hijriDate.month;
+    this.hijriDay = this.hijriDate.day;
+    this.hijriYear = this.hijriDate.year;
   }
 
   get weekdayArImage() {
@@ -30,11 +32,11 @@ export default class DailyCard {
   }
 
   get monthMiladiName() {
-    return MONTHS_MILADI_NAMES[this.month];
+    return MONTHS_MILADI_NAMES[this.month - 1];
   }
 
   get monthHijriName() {
-    return MONTHS_HIJRI_NAMES[this.hijriMonth];
+    return MONTHS_HIJRI_NAMES[this.hijriMonth - 1];
   }
 
   getWeekdayEnNameChars() {
