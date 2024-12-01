@@ -58,7 +58,7 @@ export default class DailyCard {
 
     const hadith = await getRandomHadith();
 
-    hadithEl.textContent = hadith.matan_normalized;
+    hadithEl.textContent = `”${hadith.matan_normalized}“`;
     attributionEl.textContent = `(${hadith.attribution})`;
   }
 
