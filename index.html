@@ -7,23 +7,67 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="dailyCard">
+    <div
+      class="dailyCard"
+      style="--weekday-ar-url: url(./assets/weekdays-diwani/Sat.svg)"
+    >
       <div class="background">
         <div class="background__pattern"></div>
         <img src="./assets/dailyCards/Fill.png" class="background__fill" />
         <div class="background__border"></div>
       </div>
       <div class="foreground">
-        <img src="./assets/hijri/1.png" class="hijri-month"></img>
-        <img src="./assets/miladi/1.png" class="miladi-month"></img>
-        <img src="./assets/weekdays/0.png" class="weekday"></img>
-        <div class="days">
-            <span class="day">22</span>
-            <span class="day">15</span>
+        <div class="backdrop backdrop--calendar"></div>
+        <div class="backdrop backdrop--hadith"></div>
+        <div class="backdrop backdrop--footer"></div>
+
+        <span id="month-hijri">جمادي الأولى</span>
+        <span id="month-miladi">نوفمبر</span>
+
+        <div id="days">
+          <span id="day-hijri">22</span>
+          <span id="day-miladi">15</span>
         </div>
-        <div class="year">
-            م<span>2024</span> <span>-</span> ه<span>1445</span>
+
+        <div id="month-year-separator"></div>
+
+        <div id="year">
+          <span>م</span><span id="year-hijri">2024</span>
+          <span>—</span>
+          <span>ه</span><span id="year-miladi">1445</span>
         </div>
+
+        <div id="month-weekday-separator"></div>
+
+        <div id="weekday-ar"></div>
+        <span id="weekday-en">
+          <span>S</span>
+          <span>u</span>
+          <span>n</span>
+          <span>d</span>
+          <span>a</span>
+          <span>y</span>
+        </span>
+
+        <span id="prophet">
+          <span id="salawat"></span>
+          <span>قَالَ رَسُولٌ اللَّهِ</span>
+        </span>
+
+        <span id="hadith">
+          أَلَمْ تَرَ آيَاتٍ أُنْزِلَتِ اللَّيْلَةَ لَمْ يُرَ مِثْلُهُنَّ
+          قَطُّ؟! قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، وَقُلْ أَعُوذُ بِرَبِّ
+          النَّاسِ
+        </span>
+
+        <span id="attribution">
+          <span>(</span>
+          <span>رواه بخاري</span>
+          <span>)</span>
+        </span>
+
+        <div id="tawakkol"></div>
+        <div id="logo"></div>
       </div>
     </div>
   </body>

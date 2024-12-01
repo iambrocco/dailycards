@@ -1,43 +1,68 @@
 @font-face {
-  font-family: "aljazeera";
+  font-family: "Al Jazeera";
   src: url(./assets/fonts/aljazeera.ttf);
+  font-weight: normal;
 }
+
 @font-face {
-  font-family: "arial";
-  src: url(./assets/fonts/arial.ttf);
+  font-family: "Al Jazeera";
+  src: url(./assets/fonts/aljazeera-bold.ttf);
+  font-weight: bold;
 }
+
 @font-face {
-  font-family: "diwani";
+  font-family: "Diwani";
   src: url(./assets/fonts/diwani.ttf);
 }
+
 @font-face {
-  font-family: "lemonmilk";
-  src: url(./assets/fonts/lemonmilk.ttf);
+  font-family: "Lemon Milk";
+  src: url(./assets/fonts/lemonmilk.otf);
 }
+
 @font-face {
-  font-family: "tajawal";
+  font-family: "Tajawal";
   src: url(./assets/fonts/tajawal.ttf);
 }
+
 :root {
-  --defaultFilter: invert(70%) sepia(72%) brightness(80%) contrast(101%);
-  --bgGridFilter: var(--defaultFilter) brightness(90%) opacity(20%);
-  --bgRectFilter: var(--defaultFilter) brightness(40%) opacity(5%);
-  --color: rgb(31, 72, 48);
+  /* color: hsl(219, 48%, 43%); */
+  --color-h: 219;
+  --color-s: 48%;
+  --color-l: 43%;
+  --color-hsl: var(--color-h), var(--color-s), var(--color-l);
+  --color: hsl(var(--color-hsl));
+
+  --color-dark-h: var(--color-h);
+  --color-dark-s: calc(var(--color-s) - 10%);
+  --color-dark-l: calc(var(--color-l) - 10%);
+  --color-dark-hsl: var(--color-dark-h), var(--color-dark-s), var(--color-dark-l);
+  --color-dark: hsl(var(--color-dark-hsl));
+
+  --color-accent: white;
+
+  --color-subtle: rgb(249, 249, 249);
 }
+
 * {
   margin: 0;
   padding: 0;
   color-scheme: dark;
   box-sizing: border-box;
 }
+
 .dailyCard {
+  --size: 1080px;
   position: relative;
-  height: 1080px;
-  width: 1080px;
+  height: var(--size);
+  width: var(--size);
   color: var(--color);
+  scale: 0.5;
+  transform-origin: top left;
 }
-.background > *,
-.dailyCard > * {
+
+.background>*,
+.dailyCard>* {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -50,78 +75,305 @@
   left: 0;
   width: 100%;
   height: 100%;
-  mask-image: url(./assets/dailyCards/BG.svg); /* Use SVG as mask */
-  background-color: var(
-    --color
-  ); /* This will change the color of the pattern */
-  opacity: 30%;
+  mask-image: url(./assets/dailyCards/BG.svg);
+  background-color: hsl(var(--color-hsl), 0.1);
 }
+
 .background__pattern {
   background-color: white;
   width: 100%;
   height: 100%;
 }
-.background__border::before {
-  content: "";
+
+.background__border {
   position: absolute;
   width: 100%;
   height: 100%;
-  mask-image: url(./assets/dailyCards/Border.svg); /* SVG mask */
-  background-color: var(--color); /* Set the color for the masked area */
+  mask-image: url(./assets/dailyCards/Border.svg);
+  background-color: var(--color);
   mask-repeat: repeat;
-  mask-size: 100% 100%; /* Ensure it fills properly */
-}
-.background__border {
-  background-color: rgba(131, 11, 11, 0);
+  mask-size: 100% 100%;
 }
 
 .foreground {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  padding: 150px;
+
+  padding: var(--cell-size);
+
+  --cell-size: calc(var(--size) / 14);
 }
-.foreground > * {
+
+.foreground>* {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.hijri-month {
-  grid-row: 1 / 3;
-  grid-column: 1 / 4;
-}
-.miladi-month {
-  grid-row: 2 / 4;
-  grid-column: 1 / 4;
-}
-.weekday {
-  grid-row: 1 / 4;
-  grid-column: 9 / 13;
-}
-.days {
-  grid-row: 1 / 4;
-  grid-column: 4 / 5;
 
+#month-hijri {
+  grid-row: 2 / 4;
+  grid-column: 2 / 5;
+}
+
+#month-miladi {
+  grid-row: 3 / 5;
+  grid-column: 2 / 5;
+}
+
+#days {
+  grid-row: 2 / 5;
+  grid-column: 5 / 6;
+}
+
+#year {
+  grid-row: 5 / 6;
+  grid-column: 2 / 6;
+}
+
+#month-year-separator {
+  grid-row: 4 / 6;
+  grid-column: 2 / 6;
+}
+
+#month-weekday-separator {
+  grid-column: 6 / 8;
+  grid-row: 3 / 5;
+}
+
+#weekday-ar {
+  grid-row: 2 / 5;
+  grid-column: 8 / 12;
+}
+
+#weekday-en {
+  grid-row: 5 / 6;
+  grid-column: 8 / 12;
+}
+
+#prophet {
+  grid-row: 7 / 8;
+  grid-column: 5 / 9;
+}
+
+#hadith {
+  grid-row: 7 / 10;
+  grid-column: 2 / -2;
+}
+
+#attribution {
+  grid-row: 9 / 10;
+  grid-column: 6 / 8;
+}
+
+#tawakkol {
+  grid-column: 2 / 11;
+  grid-row: 11 / 12;
+}
+
+#logo {
+  grid-column: 10 / 13;
+  grid-row: 10 / 13;
+}
+
+.backdrop--calendar {
+  grid-row: 1 / 7;
+  grid-column: 1 / -1;
+}
+
+.backdrop--hadith {
+  grid-row: 6 / 11;
+  grid-column: 1 / -1;
+}
+
+.backdrop--footer {
+  grid-row: 10 / 13;
+  grid-column: 1 / -1;
+}
+
+
+#month-hijri,
+#month-miladi {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  height: calc(100% - var(--cell-size));
+  margin-block: auto;
+  padding-right: calc(var(--cell-size) * 0.33);
+
+  font-size: 4.5rem;
+  font-family: Diwani;
+  white-space: nowrap;
+}
+
+#month-miladi {
+  padding-bottom: 2rem;
+}
+
+#days {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 25px;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Al Jazeera;
   font-weight: bold;
   font-size: 2rem;
-  color: white;
+  color: var(--color-accent);
 
-  width: calc(100% - 20px);
-  height: calc(100% - 50px);
+  width: calc(100% - var(--cell-size) * 0.33);
+  height: calc(100% - var(--cell-size));
+  margin: auto;
 
-  margin-inline: 10px;
-  margin-block: 25px;
-  gap: 25px;
-  
   background-color: var(--color);
 }
-.year {
+
+#weekday-ar {
+  mask-image: var(--weekday-ar-url);
+  mask-size: 100% 100%;
+  background-color: var(--color);
+}
+
+#weekday-en {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  justify-content: space-evenly;
+
+
+  width: calc(100% - var(--cell-size) / 4);
+  height: calc(100% - var(--cell-size) / 2);
+  margin: auto;
+
+  color: var(--color-accent);
+  background-color: var(--color);
+
+  font-size: 1.75rem;
+  font-family: Lemon Milk;
+  text-transform: uppercase;
+}
+
+#year {
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  justify-content: center;
+
+  grid-template-columns: 16px 52px 32px 16px 52px;
+
+  width: calc(100% - var(--cell-size));
+  margin: auto;
+
+  font-size: 1.5rem;
+  font-family: Al Jazeera;
+  font-weight: bold;
+}
+
+#prophet,
+#hadith,
+#attribution {
+  font-family: Tajawal;
+}
+
+#prophet {
+  font-size: 2rem;
+  text-align: center;
+  color: hsl(var(--color-hsl), 0.8);
+}
+
+#prophet>#salawat {
+  display: inline-block;
+  height: 1.25em;
+  width: 1.25em;
+
+  mask-image: url(./assets/symbols/salawat.svg);
+  mask-repeat: no-repeat;
+  background-color: currentColor;
+}
+
+#attribution {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+
+  color: hsl(var(--color-hsl), 0.75);
+  font-size: 1.5rem;
+}
+
+#hadith {
+  padding: calc(var(--cell-size) * 0.6);
+
+  text-align: center;
+  font-size: 2.65rem;
+  line-height: 1.25em;
+}
+
+#month-year-separator {
+  width: calc(100% - var(--cell-size));
+  height: 50%;
+  margin: auto;
+
+  mask-image: url(./assets/dailyCards/divider0.svg);
+  mask-repeat: no-repeat;
+  mask-size: 100%;
+  mask-position: center;
+  background-color: var(--color);
+}
+
+#month-weekday-separator {
+  width: 25%;
+  height: 25%;
+  margin: auto;
+
+  mask-image: url(./assets/dailyCards/divider1.svg);
+  mask-repeat: no-repeat;
+  mask-size: 100%;
+  mask-position: center;
+  background-color: var(--color-dark);
+
+  transform: rotate(45deg);
+}
+
+#tawakkol {
+  width: calc(100% - var(--cell-size) / 2);
+
+  mask-image: url(./assets/dailyCards/tawakkol.svg);
+  mask-repeat: no-repeat;
+  mask-size: 100%;
+  mask-position: center;
+  background-color: var(--color-dark);
+}
+
+#logo {
+  position: relative;
+  width: 40%;
+  height: 40%;
+  margin: auto;
+
+  border-radius: 50%;
+  background-color: hsl(var(--color-hsl), 0.1);
+  outline: 5px solid hsl(var(--color-hsl), 0.075);
+
+}
+
+#logo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  mask-image: url(./assets/logo.svg);
+  mask-size: 100% 100%;
+  background-color: var(--color-dark);
+}
+
+.backdrop {
+  margin: auto;
+  width: calc(100% - var(--cell-size) * 1.5);
+  height: calc(100% - var(--cell-size) * 1.5);
+
+  background-color: var(--color-subtle);
 }
