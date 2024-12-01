@@ -1,0 +1,33 @@
+@font-face {
+	font-family: "Al Jazeera";
+	src: url(/assets/fonts/aljazeera.ttf);
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Al Jazeera";
+	src: url(/assets/fonts/aljazeera-bold.ttf);
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: "Diwani";
+	src: url(/assets/fonts/diwani.ttf);
+}
+
+@font-face {
+	font-family: "Lemon Milk";
+	src: url(/assets/fonts/lemonmilk.otf);
+}
+
+@font-face {
+	font-family: "Tajawal";
+	src: url(/assets/fonts/tajawal.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	color-scheme: dark;
+	box-sizing: border-box;
+}

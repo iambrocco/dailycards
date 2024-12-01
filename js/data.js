@@ -21,13 +21,13 @@ export const WEEKDAYS_EN_NAMES = [
 ];
 
 export const WEEKDAYS_AR_IMAGES = [
-  "./assets/weekdays-diwani/Sun.svg",
-  "./assets/weekdays-diwani/Mon.svg",
-  "./assets/weekdays-diwani/Tue.svg",
-  "./assets/weekdays-diwani/Wed.svg",
-  "./assets/weekdays-diwani/Thu.svg",
-  "./assets/weekdays-diwani/Fri.svg",
-  "./assets/weekdays-diwani/Sat.svg",
+  "/assets/weekdays-diwani/Sun.svg",
+  "/assets/weekdays-diwani/Mon.svg",
+  "/assets/weekdays-diwani/Tue.svg",
+  "/assets/weekdays-diwani/Wed.svg",
+  "/assets/weekdays-diwani/Thu.svg",
+  "/assets/weekdays-diwani/Fri.svg",
+  "/assets/weekdays-diwani/Sat.svg",
 ];
 
 export const MONTHS_MILADI_NAMES = [

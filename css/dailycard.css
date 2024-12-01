@@ -1,32 +1,5 @@
-@font-face {
-  font-family: "Al Jazeera";
-  src: url(./assets/fonts/aljazeera.ttf);
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "Al Jazeera";
-  src: url(./assets/fonts/aljazeera-bold.ttf);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "Diwani";
-  src: url(./assets/fonts/diwani.ttf);
-}
-
-@font-face {
-  font-family: "Lemon Milk";
-  src: url(./assets/fonts/lemonmilk.otf);
-}
-
-@font-face {
-  font-family: "Tajawal";
-  src: url(./assets/fonts/tajawal.ttf);
-}
-
-:root {
-  /* color: hsl(219, 48%, 43%); */
+.dailyCard {
+  --size: 1080px;
   --color-h: 219;
   --color-s: 48%;
   --color-l: 43%;
@@ -42,23 +15,18 @@
   --color-accent: white;
 
   --color-subtle: rgb(249, 249, 249);
-}
 
-* {
-  margin: 0;
-  padding: 0;
-  color-scheme: dark;
-  box-sizing: border-box;
-}
-
-.dailyCard {
-  --size: 1080px;
   position: relative;
   height: var(--size);
   width: var(--size);
   color: var(--color);
-  scale: 0.5;
-  transform-origin: top left;
+}
+
+.dailyCard--preview {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0.3);
+  top: 50%;
+  left: 50%;
 }
 
 .background>*,
@@ -75,7 +43,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  mask-image: url(./assets/dailyCards/BG.svg);
+  mask-image: url(/assets/dailyCards/BG.svg);
   background-color: hsl(var(--color-hsl), 0.1);
 }
 
@@ -89,7 +57,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  mask-image: url(./assets/dailyCards/Border.svg);
+  mask-image: url(/assets/dailyCards/Border.svg);
   background-color: var(--color);
   mask-repeat: repeat;
   mask-size: 100% 100%;
@@ -287,7 +255,7 @@
   height: 1.25em;
   width: 1.25em;
 
-  mask-image: url(./assets/symbols/salawat.svg);
+  mask-image: url(/assets/symbols/salawat.svg);
   mask-repeat: no-repeat;
   background-color: currentColor;
 }
@@ -315,7 +283,7 @@
   height: 50%;
   margin: auto;
 
-  mask-image: url(./assets/dailyCards/divider0.svg);
+  mask-image: url(/assets/dailyCards/divider0.svg);
   mask-repeat: no-repeat;
   mask-size: 100%;
   mask-position: center;
@@ -327,7 +295,7 @@
   height: 25%;
   margin: auto;
 
-  mask-image: url(./assets/dailyCards/divider1.svg);
+  mask-image: url(/assets/dailyCards/divider1.svg);
   mask-repeat: no-repeat;
   mask-size: 100%;
   mask-position: center;
@@ -339,7 +307,7 @@
 #tawakkol {
   width: calc(100% - var(--cell-size) / 2);
 
-  mask-image: url(./assets/dailyCards/tawakkol.svg);
+  mask-image: url(/assets/dailyCards/tawakkol.svg);
   mask-repeat: no-repeat;
   mask-size: 100%;
   mask-position: center;
@@ -366,7 +334,7 @@
   width: 100%;
   height: 100%;
 
-  mask-image: url(./assets/logo.svg);
+  mask-image: url(/assets/logo.svg);
   mask-size: 100% 100%;
   background-color: var(--color-dark);
 }
