@@ -22,13 +22,6 @@
   color: var(--color);
 }
 
-.dailyCard--preview {
-  position: absolute;
-  transform: translate(-50%, -50%) scale(0.3);
-  top: 50%;
-  left: 50%;
-}
-
 .background>*,
 .dailyCard>* {
   position: absolute;

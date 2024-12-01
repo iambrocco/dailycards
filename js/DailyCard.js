@@ -5,12 +5,11 @@ import {
   WEEKDAYS_AR_IMAGES,
   WEEKDAYS_EN_NAMES,
 } from "./data.js";
-import { gregorianToHijri } from "./lib/hijri.js";
+import { adjustHijriDate, gregorianToHijri } from "./lib/hijri.js";
 
 export default class DailyCard {
   constructor(date = new Date()) {
     this.date = date;
-    this.hijriDate = gregorianToHijri(date);
 
     this.weekday = date.getDay();
 
@@ -18,9 +17,7 @@ export default class DailyCard {
     this.day = date.getDate();
     this.year = date.getFullYear();
 
-    this.hijriMonth = this.hijriDate.month;
-    this.hijriDay = this.hijriDate.day;
-    this.hijriYear = this.hijriDate.year;
+    this.adjustHijriDate(0);
   }
 
   get weekdayArImage() {
@@ -50,7 +47,22 @@ export default class DailyCard {
     });
   }
 
-  async assignTo(el) {
+  assignTo(el) {
+    this.assignDatesTo(el);
+    this.assignHadithTo(el);
+  }
+
+  async assignHadithTo(el) {
+    const hadithEl = el.querySelector("#hadith");
+    const attributionEl = el.querySelector("#attribution");
+
+    const hadith = await getRandomHadith();
+
+    hadithEl.textContent = hadith.matan_normalized;
+    attributionEl.textContent = `(${hadith.attribution})`;
+  }
+
+  async assignDatesTo(el) {
     const monthHijriEl = el.querySelector("#month-hijri");
     const monthMiladiEl = el.querySelector("#month-miladi");
     const dayHijriEl = el.querySelector("#day-hijri");
@@ -60,9 +72,6 @@ export default class DailyCard {
 
     const weekdayArEl = el.querySelector("#weekday-ar");
     const weekdayEnEl = el.querySelector("#weekday-en");
-
-    const hadithEl = el.querySelector("#hadith");
-    const attributionEl = el.querySelector("#attribution");
 
     dayMiladiEl.textContent = this.day;
     dayHijriEl.textContent = this.hijriDay;
@@ -82,10 +91,13 @@ export default class DailyCard {
     for (const charSpan of this.getWeekdayEnNameCharSpans()) {
       weekdayEnEl.appendChild(charSpan);
     }
+  }
 
-    const hadith = await getRandomHadith();
+  adjustHijriDate(offset) {
+    this.hijriDate = adjustHijriDate(gregorianToHijri(this.date), offset);
 
-    hadithEl.textContent = hadith.matan_normalized;
-    attributionEl.textContent = `(${hadith.attribution})`;
+    this.hijriMonth = this.hijriDate.month;
+    this.hijriDay = this.hijriDate.day;
+    this.hijriYear = this.hijriDate.year;
   }
 }
