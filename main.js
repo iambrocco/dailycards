@@ -1,3 +1,4 @@
+import "./js/utils/InlineHTMLElement.js";
 import DailyCard from "./js/DailyCard.js";
 import { colorToRGB, hexToRGB, rgbToHex, rgbToHsl } from "./js/utils/color.js";
 import { randomInt } from "./js/utils/random.js";
@@ -7,6 +8,8 @@ const hijriOffsetInput = document.getElementById("hijri-offset");
 const colorInput = document.getElementById("color");
 const randomizeColorButton = document.getElementById("random-color");
 const randomizeHadithButton = document.getElementById("random-hadith");
+const scaleInput = document.getElementById("download-scale");
+const downloadPngButton = document.getElementById("download-png");
 
 const date = new Date();
 const dailyCard = new DailyCard(date);
@@ -15,6 +18,7 @@ hijriOffsetInput.addEventListener("input", updateHijriOffset);
 colorInput.addEventListener("input", updateColors);
 randomizeColorButton.addEventListener("click", randomizeColor);
 randomizeHadithButton.addEventListener("click", updateHadith);
+downloadPngButton.addEventListener("click", downloadPng);
 
 randomizeColor();
 updateHijriOffset();
@@ -52,4 +56,20 @@ function randomizeColor() {
       `hsl(${randomHue}, ${randomSaturation}%, ${randomLightness}%)`
     )
   );
+}
+
+async function downloadPng() {
+  const dataurl = await domtoimage.toPng(dailyCardEl, {
+    width: 1080,
+    height: 1080,
+    scale: +scaleInput.value,
+    onclone(element) {
+      element.style.transform = 'none';
+    },
+  });
+
+  const a = document.createElement("a");
+  a.href = dataurl;
+  a.download = `Daily Card ${date.toISOString().split("T")[0]}.png`;
+  a.click();
 }

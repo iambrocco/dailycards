@@ -82,10 +82,7 @@ export default class DailyCard {
     yearHijriEl.textContent = this.hijriYear;
     yearMiladiEl.textContent = this.year;
 
-    weekdayArEl.style.setProperty(
-      "--weekday-ar-url",
-      `url(${this.weekdayArImage})`
-    );
+    weekdayArEl.setAttribute("src", this.weekdayArImage);
 
     weekdayEnEl.textContent = "";
     for (const charSpan of this.getWeekdayEnNameCharSpans()) {

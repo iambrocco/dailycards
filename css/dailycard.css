@@ -29,16 +29,6 @@
   height: 100%;
 }
 
-.background__pattern::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  mask-image: url(/assets/dailyCards/BG.svg);
-  background-color: hsl(var(--color-hsl), 0.1);
-}
 
 .background__pattern {
   background-color: white;
@@ -50,10 +40,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  mask-image: url(/assets/dailyCards/Border.svg);
-  background-color: var(--color);
-  mask-repeat: repeat;
-  mask-size: 100% 100%;
 }
 
 .foreground {
@@ -155,12 +141,14 @@
 
 #month-hijri,
 #month-miladi {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: end;
 
   height: calc(100% - var(--cell-size));
-  margin-block: auto;
+  top: 50%;
+  translate: 0 -50%;
   padding-right: calc(var(--cell-size) * 0.33);
 
   font-size: 4.5rem;
@@ -173,6 +161,7 @@
 }
 
 #days {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -186,18 +175,15 @@
 
   width: calc(100% - var(--cell-size) * 0.33);
   height: calc(100% - var(--cell-size));
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 
-  background-color: var(--color);
-}
-
-#weekday-ar {
-  mask-image: var(--weekday-ar-url);
-  mask-size: 100% 100%;
   background-color: var(--color);
 }
 
 #weekday-en {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -205,7 +191,9 @@
 
   width: calc(100% - var(--cell-size) / 4);
   height: calc(100% - var(--cell-size) / 2);
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 
   color: var(--color-accent);
   background-color: var(--color);
@@ -216,6 +204,7 @@
 }
 
 #year {
+  position: absolute;
   display: grid;
   align-items: end;
   justify-items: center;
@@ -224,7 +213,9 @@
   grid-template-columns: 16px 52px 32px 16px 52px;
 
   width: calc(100% - var(--cell-size));
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 
   font-size: 1.5rem;
   font-family: Al Jazeera;
@@ -247,10 +238,6 @@
   display: inline-block;
   height: 1.25em;
   width: 1.25em;
-
-  mask-image: url(/assets/symbols/salawat.svg);
-  mask-repeat: no-repeat;
-  background-color: currentColor;
 }
 
 #attribution {
@@ -272,46 +259,36 @@
 }
 
 #month-year-separator {
+  position: absolute;
   width: calc(100% - var(--cell-size));
   height: 50%;
-  margin: auto;
-
-  mask-image: url(/assets/dailyCards/divider0.svg);
-  mask-repeat: no-repeat;
-  mask-size: 100%;
-  mask-position: center;
-  background-color: var(--color);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 }
 
 #month-weekday-separator {
+  position: absolute;
   width: 25%;
   height: 25%;
-  margin: auto;
-
-  mask-image: url(/assets/dailyCards/divider1.svg);
-  mask-repeat: no-repeat;
-  mask-size: 100%;
-  mask-position: center;
-  background-color: var(--color-dark);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 
   transform: rotate(45deg);
 }
 
 #tawakkol {
   width: calc(100% - var(--cell-size) / 2);
-
-  mask-image: url(/assets/dailyCards/tawakkol.svg);
-  mask-repeat: no-repeat;
-  mask-size: 100%;
-  mask-position: center;
-  background-color: var(--color-dark);
 }
 
 #logo {
-  position: relative;
+  position: absolute;
   width: 40%;
   height: 40%;
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 
   border-radius: 50%;
   background-color: hsl(var(--color-hsl), 0.1);
@@ -319,23 +296,58 @@
 
 }
 
-#logo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  mask-image: url(/assets/logo.svg);
-  mask-size: 100% 100%;
-  background-color: var(--color-dark);
-}
-
 .backdrop {
-  margin: auto;
+  position: absolute;
   width: calc(100% - var(--cell-size) * 1.5);
   height: calc(100% - var(--cell-size) * 1.5);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 
   background-color: var(--color-subtle);
+}
+
+.dailyCard :not(.backdrop) {
+  z-index: 1;
+}
+
+
+
+/* SVG Styling */
+
+.dailyCard inline-html svg {
+  width: 100%;
+  height: 100%;
+}
+
+.background__pattern {
+  fill: hsl(var(--color-hsl), 0.1);
+}
+
+.background__border {
+  fill: var(--color);
+}
+
+#tawakkol {
+  fill: var(--color-dark);
+}
+
+#weekday-ar {
+  fill: var(--color);
+}
+
+#prophet>#salawat {
+  fill: currentColor;
+}
+
+#month-year-separator {
+  fill: var(--color);
+}
+
+#month-weekday-separator {
+  fill: var(--color-dark);
+}
+
+#logo {
+  fill: var(--color-dark);
 }
