@@ -242,11 +242,14 @@
 
 #attribution {
   display: flex;
-  align-items: end;
   justify-content: center;
+  width: 100%;
+  height: fit-content;
+  margin-top: var(--cell-size);
 
   color: hsl(var(--color-hsl), 0.75);
   font-size: 1.5rem;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -254,7 +257,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--cell-size) * 0.6);
+  padding-inline: calc(var(--cell-size) * 0.6);
+  margin-block: calc(var(--cell-size) * 0.6);
+  height: calc(100% - var(--cell-size) * 0.6 * 2);
 
   direction: rtl;
   text-align: center;
