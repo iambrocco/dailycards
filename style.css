@@ -299,6 +299,7 @@
 
   color: hsl(var(--color-hsl), 0.75);
   font-size: 1.5rem;
+  white-space: nowrap;
 }
 
 #hadith {
