@@ -324,11 +324,6 @@
 
 /* SVG Styling */
 
-.dailyCard inline-html svg {
-  width: 100%;
-  height: 100%;
-}
-
 .background__pattern {
   fill: hsl(var(--color-hsl), 0.1);
 }
