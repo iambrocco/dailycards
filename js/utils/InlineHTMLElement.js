@@ -8,18 +8,22 @@ export default class InlineHTMLElement extends HTMLElement {
     const src = newValue;
 
     if (src && this.#cache.has(src)) {
-      this.innerHTML = this.#cache.get(src);
+      this.setHTML(this.#cache.get(src));
       return;
     }
 
     if (!src) {
-      this.innerHTML = "";
+      this.textContent = "";
       return;
     }
 
     const result = await fetch(src).then((response) => response.text());
     this.#cache.set(src, result);
 
+    this.setHTML(result);
+  }
+
+  setHTML(result) {
     this.innerHTML = result;
 
     const rootNode = this.children[0];
