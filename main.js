@@ -5,6 +5,7 @@ import { randomInt } from "./js/utils/random.js";
 
 const dailyCardEl = document.querySelector(".dailyCard");
 const hijriOffsetInput = document.getElementById("hijri-offset");
+const dateInput = document.getElementById("date");
 const colorInput = document.getElementById("color");
 const randomizeColorButton = document.getElementById("random-color");
 const randomizeHadithButton = document.getElementById("random-hadith");
@@ -14,17 +15,23 @@ const downloadPngButton = document.getElementById("download-png");
 const date = new Date();
 const dailyCard = new DailyCard(date);
 
-hijriOffsetInput.addEventListener("input", updateHijriOffset);
+dateInput.valueAsDate = date;
+hijriOffsetInput.addEventListener("input", updateDates);
 colorInput.addEventListener("input", updateColors);
 randomizeColorButton.addEventListener("click", randomizeColor);
 randomizeHadithButton.addEventListener("click", updateHadith);
 downloadPngButton.addEventListener("click", downloadPng);
+dateInput.addEventListener("input", updateDates);
 
 randomizeColor();
-updateHijriOffset();
+updateDates();
 updateHadith();
 
-function updateHijriOffset() {
+function updateDates() {
+  if (dateInput.valueAsDate) {
+    dailyCard.setDate(dateInput.valueAsDate);
+  }
+
   dailyCard.adjustHijriDate(Number(hijriOffsetInput.value));
   dailyCard.assignDatesTo(dailyCardEl);
 }
@@ -64,7 +71,7 @@ async function downloadPng() {
     height: 1080,
     scale: +scaleInput.value,
     onclone(element) {
-      element.style.transform = 'none';
+      element.style.transform = "none";
     },
   });
 

@@ -9,14 +9,7 @@ import { adjustHijriDate, gregorianToHijri } from "./lib/hijri.js";
 
 export default class DailyCard {
   constructor(date = new Date()) {
-    this.date = date;
-
-    this.weekday = date.getDay();
-
-    this.month = date.getMonth() + 1;
-    this.day = date.getDate();
-    this.year = date.getFullYear();
-
+    this.setDate(date);
     this.adjustHijriDate(0);
   }
 
@@ -90,6 +83,15 @@ export default class DailyCard {
     }
   }
 
+  setDate(date) {
+    this.date = date;
+
+    this.weekday = date.getDay();
+
+    this.month = date.getMonth() + 1;
+    this.day = date.getDate();
+    this.year = date.getFullYear();
+  }
   adjustHijriDate(offset) {
     this.hijriDate = adjustHijriDate(gregorianToHijri(this.date), offset);
 
