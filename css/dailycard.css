@@ -151,7 +151,7 @@
   translate: 0 -50%;
   padding-right: calc(var(--cell-size) * 0.33);
 
-  font-size: 4.5rem;
+  font-size: 4.25rem;
   font-family: Diwani;
   white-space: nowrap;
 }
